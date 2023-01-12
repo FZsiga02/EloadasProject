@@ -50,6 +50,18 @@ class EloadasTest {
 
     @Test
     void getTeli() {
+        assertFalse(eloadas.getTeli());
+        eloadas.lefoglal();
+        assertFalse(eloadas.getTeli());
+        for (int i = 0; i < 18; i++) {
+            eloadas.lefoglal();
+        }
+        assertFalse(eloadas.getTeli());
+        eloadas.lefoglal();
+        assertTrue(eloadas.getTeli());
+        eloadas.lefoglal();
+        assertTrue(eloadas.getTeli());
+
     }
 
     @Test
