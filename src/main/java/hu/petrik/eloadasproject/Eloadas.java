@@ -46,7 +46,19 @@ public class Eloadas {
     }
 
     public boolean getTeli() {
-        throw new UnsupportedOperationException();
+        int i = 0;
+        int j = 0;
+        while (i < this.foglalasok.length && this.foglalasok[i][j]) {
+            j = 0;
+            while (j < this.foglalasok[i].length && this.foglalasok[i][j]) {
+                j++;
+            }
+            if (j == this.foglalasok[i].length) {
+                j = 0;
+                i++;
+            }
+        }
+        return i == this.foglalasok.length && j == this.foglalasok[i-1].length;
     }
 
     public boolean foglalt(int sorSzam, int helySzam) {
