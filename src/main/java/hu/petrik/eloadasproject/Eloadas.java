@@ -34,7 +34,15 @@ public class Eloadas {
     }
 
     public int getSzabadHelyek() {
-        throw new UnsupportedOperationException();
+        int szabadHelyek = 0;
+        for (boolean[] sor: foglalasok) {
+            for (boolean hely: sor) {
+                if (!hely) {
+                    szabadHelyek++;
+                }
+            }
+        }
+        return  szabadHelyek;
     }
 
     public boolean getTeli() {
