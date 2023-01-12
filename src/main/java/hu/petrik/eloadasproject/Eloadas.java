@@ -5,10 +5,10 @@ public class Eloadas {
 
     public Eloadas(int sorokSzama, int helyekSzama) {
         if (sorokSzama < 1) {
-            throw new IllegalArgumentException("A sorokSzama paraméternek pozitívnak kell lennie");
+            throw new IllegalArgumentException("A 'sorokSzama' paraméternek pozitívnak kell lennie");
         }
         if (helyekSzama < 1) {
-            throw new IllegalArgumentException("A shelyekSzama paraméternek pozitívnak kell lennie");
+            throw new IllegalArgumentException("A 'helyekSzama' paraméternek pozitívnak kell lennie");
         }
         this.foglalasok = new boolean[sorokSzama][helyekSzama];
     }
@@ -62,6 +62,18 @@ public class Eloadas {
     }
 
     public boolean foglalt(int sorSzam, int helySzam) {
-        throw new UnsupportedOperationException();
+        if (sorSzam < 1) {
+            throw new IllegalArgumentException("A 'sorSzam' paraméternek pozitívnak kell lennie");
+        }
+        if (sorSzam > this.foglalasok.length) {
+            throw new IllegalArgumentException("A 'sorSzam' paraméter nem lehet nagyobb a sorok számánál");
+        }
+        if (helySzam < 1) {
+            throw new IllegalArgumentException("A 'helySzam' paraméternek pozitívnak kell lennie");
+        }
+        if (helySzam > this.foglalasok[sorSzam - 1].length) {
+            throw new IllegalArgumentException("A 'sorSzam' paraméter nem lehet nagyobb az adott sorban lévő helyek számánál");
+        }
+        return this.foglalasok[sorSzam - 1][helySzam - 1];
     }
 }
