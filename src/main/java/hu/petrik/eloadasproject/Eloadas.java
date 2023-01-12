@@ -1,8 +1,16 @@
 package hu.petrik.eloadasproject;
 
 public class Eloadas {
+    private boolean [][] foglalasok;
+
     public Eloadas(int sorokSzama, int helyekSzama) {
-        throw new UnsupportedOperationException();
+        if (sorokSzama < 1) {
+            throw new IllegalArgumentException("A sorokSzama paraméternek pozitívnak kell lennie");
+        }
+        if (helyekSzama < 1) {
+            throw new IllegalArgumentException("A shelyekSzama paraméternek pozitívnak kell lennie");
+        }
+        this.foglalasok = new boolean[sorokSzama][helyekSzama];
     }
 
     public boolean lefoglal() {
