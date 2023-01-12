@@ -35,6 +35,17 @@ class EloadasTest {
 
     @Test
     void getSzabadHelyek() {
+        assertEquals(20, eloadas.getSzabadHelyek());
+        eloadas.lefoglal();
+        assertEquals(19, eloadas.getSzabadHelyek());
+        for (int i = 0; i < 18; i++) {
+            eloadas.lefoglal();
+        }
+        assertEquals(1, eloadas.getSzabadHelyek());
+        eloadas.lefoglal();
+        assertEquals(0, eloadas.getSzabadHelyek());
+        eloadas.lefoglal();
+        assertEquals(0, eloadas.getSzabadHelyek());
     }
 
     @Test
