@@ -19,6 +19,7 @@ class EloadasTest {
         assertThrows(IllegalArgumentException.class, () -> new Eloadas(4, 0));
         assertThrows(IllegalArgumentException.class, () -> new Eloadas(4, -3));
         assertThrows(IllegalArgumentException.class, () -> new Eloadas(-7, 5));
+        assertThrows(IllegalArgumentException.class, () -> new Eloadas(-7, -3));
         assertThrows(IllegalArgumentException.class, () -> new Eloadas(0, 0));
     }
 
@@ -66,5 +67,36 @@ class EloadasTest {
 
     @Test
     void foglalt() {
+        assertThrows(IllegalArgumentException.class, () -> eloadas.foglalt(0, 5));
+        assertThrows(IllegalArgumentException.class, () -> eloadas.foglalt(4, 0));
+        assertThrows(IllegalArgumentException.class, () -> eloadas.foglalt(4, -3));
+        assertThrows(IllegalArgumentException.class, () -> eloadas.foglalt(-7, 5));
+        assertThrows(IllegalArgumentException.class, () -> eloadas.foglalt(-7, -3));
+        assertThrows(IllegalArgumentException.class, () -> eloadas.foglalt(0, 0));
+        assertThrows(IllegalArgumentException.class, () -> eloadas.foglalt(5, 3));
+        assertThrows(IllegalArgumentException.class, () -> eloadas.foglalt(3, 6));
+
+        assertFalse(eloadas.foglalt(1, 1));
+        eloadas.lefoglal();
+        assertTrue(eloadas.foglalt(1,1));
+        assertFalse(eloadas.foglalt(1,2));
+        assertFalse(eloadas.foglalt(2,1));
+        eloadas.lefoglal();
+        assertTrue(eloadas.foglalt(1,1));
+        assertTrue(eloadas.foglalt(1,2));
+        assertFalse(eloadas.foglalt(2,1));
+        //Első sor maradék helyeit lefoglalom
+        for (int i = 0; i < 3; i++) {
+            eloadas.lefoglal();
+        }
+        assertTrue(eloadas.foglalt(1,1));
+        assertTrue(eloadas.foglalt(1,2));
+        assertFalse(eloadas.foglalt(2,1));
+
+        eloadas.lefoglal();
+
+        assertTrue(eloadas.foglalt(1,1));
+        assertTrue(eloadas.foglalt(1,2));
+        assertTrue(eloadas.foglalt(2,1));
     }
 }
