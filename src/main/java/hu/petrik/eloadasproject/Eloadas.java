@@ -14,7 +14,23 @@ public class Eloadas {
     }
 
     public boolean lefoglal() {
-        throw new UnsupportedOperationException();
+        boolean sikerult = false;
+        int i = 0;
+        while (!sikerult && i < foglalasok.length) {
+            int j = 0;
+            while (!sikerult && j < foglalasok[i].length) {
+                if (foglalasok[i][j]) {
+                    j++;
+                } else {
+                    foglalasok[i][j] = true;
+                    sikerult = true;
+                }
+            }
+            if (!sikerult) {
+                i++;
+            }
+        }
+        return sikerult;
     }
 
     public int getSzabadHelyek() {
